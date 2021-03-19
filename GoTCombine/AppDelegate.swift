@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TinyConstraints
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

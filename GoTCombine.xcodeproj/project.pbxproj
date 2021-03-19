@@ -3,18 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3264ADE02604ED74007A302A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264ADDF2604ED74007A302A /* AppDelegate.swift */; };
 		3264ADE22604ED74007A302A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264ADE12604ED74007A302A /* SceneDelegate.swift */; };
-		3264ADE42604ED74007A302A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264ADE32604ED74007A302A /* ViewController.swift */; };
-		3264ADE72604ED74007A302A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3264ADE52604ED74007A302A /* Main.storyboard */; };
 		3264ADE92604ED75007A302A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3264ADE82604ED75007A302A /* Assets.xcassets */; };
 		3264ADEC2604ED75007A302A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3264ADEA2604ED75007A302A /* LaunchScreen.storyboard */; };
 		3264ADF72604ED75007A302A /* GoTCombineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264ADF62604ED75007A302A /* GoTCombineTests.swift */; };
 		3264AE022604ED75007A302A /* GoTCombineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264AE012604ED75007A302A /* GoTCombineUITests.swift */; };
+		3264AE232604F3DF007A302A /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264AE202604F3DF007A302A /* BooksViewController.swift */; };
+		3264AE242604F3DF007A302A /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264AE212604F3DF007A302A /* BooksView.swift */; };
+		3264AE252604F3DF007A302A /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264AE222604F3DF007A302A /* BooksViewModel.swift */; };
+		3264AE482604F71D007A302A /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 3264AE472604F71D007A302A /* TinyConstraints */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +40,6 @@
 		3264ADDC2604ED74007A302A /* GoTCombine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoTCombine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3264ADDF2604ED74007A302A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3264ADE12604ED74007A302A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3264ADE32604ED74007A302A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3264ADE62604ED74007A302A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3264ADE82604ED75007A302A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3264ADEB2604ED75007A302A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3264ADED2604ED75007A302A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +49,9 @@
 		3264ADFD2604ED75007A302A /* GoTCombineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoTCombineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3264AE012604ED75007A302A /* GoTCombineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTCombineUITests.swift; sourceTree = "<group>"; };
 		3264AE032604ED75007A302A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3264AE202604F3DF007A302A /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
+		3264AE212604F3DF007A302A /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
+		3264AE222604F3DF007A302A /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3264AE482604F71D007A302A /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +103,12 @@
 		3264ADDE2604ED74007A302A /* GoTCombine */ = {
 			isa = PBXGroup;
 			children = (
+				3264AE1E2604F3B8007A302A /* Modules */,
+				3264AE1D2604F3AE007A302A /* Services */,
+				3264AE1C2604F3A7007A302A /* Models */,
+				3264AE1B2604F3A0007A302A /* Extensions */,
 				3264ADDF2604ED74007A302A /* AppDelegate.swift */,
 				3264ADE12604ED74007A302A /* SceneDelegate.swift */,
-				3264ADE32604ED74007A302A /* ViewController.swift */,
-				3264ADE52604ED74007A302A /* Main.storyboard */,
 				3264ADE82604ED75007A302A /* Assets.xcassets */,
 				3264ADEA2604ED75007A302A /* LaunchScreen.storyboard */,
 				3264ADED2604ED75007A302A /* Info.plist */,
@@ -128,6 +134,45 @@
 			path = GoTCombineUITests;
 			sourceTree = "<group>";
 		};
+		3264AE1B2604F3A0007A302A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3264AE1C2604F3A7007A302A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3264AE1D2604F3AE007A302A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3264AE1E2604F3B8007A302A /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3264AE1F2604F3C6007A302A /* Books */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		3264AE1F2604F3C6007A302A /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				3264AE202604F3DF007A302A /* BooksViewController.swift */,
+				3264AE212604F3DF007A302A /* BooksView.swift */,
+				3264AE222604F3DF007A302A /* BooksViewModel.swift */,
+			);
+			path = Books;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +189,9 @@
 			dependencies = (
 			);
 			name = GoTCombine;
+			packageProductDependencies = (
+				3264AE472604F71D007A302A /* TinyConstraints */,
+			);
 			productName = GoTCombine;
 			productReference = 3264ADDC2604ED74007A302A /* GoTCombine.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +263,9 @@
 				Base,
 			);
 			mainGroup = 3264ADD32604ED74007A302A;
+			packageReferences = (
+				3264AE462604F71D007A302A /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+			);
 			productRefGroup = 3264ADDD2604ED74007A302A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,7 +284,6 @@
 			files = (
 				3264ADEC2604ED75007A302A /* LaunchScreen.storyboard in Resources */,
 				3264ADE92604ED75007A302A /* Assets.xcassets in Resources */,
-				3264ADE72604ED74007A302A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3264ADE42604ED74007A302A /* ViewController.swift in Sources */,
 				3264ADE02604ED74007A302A /* AppDelegate.swift in Sources */,
 				3264ADE22604ED74007A302A /* SceneDelegate.swift in Sources */,
+				3264AE232604F3DF007A302A /* BooksViewController.swift in Sources */,
+				3264AE252604F3DF007A302A /* BooksViewModel.swift in Sources */,
+				3264AE242604F3DF007A302A /* BooksView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +348,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3264ADE52604ED74007A302A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3264ADE62604ED74007A302A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3264ADEA2604ED75007A302A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -443,10 +487,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xdesign.GoTCombine;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xdesign.GoTCombineJonny;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -462,10 +506,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xdesign.GoTCombine;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xdesign.GoTCombineJonny;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -593,6 +637,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3264AE462604F71D007A302A /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3264AE472604F71D007A302A /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3264AE462604F71D007A302A /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3264ADD42604ED74007A302A /* Project object */;
 }
