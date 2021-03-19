@@ -6,6 +6,7 @@
 //
 
 import XCTest
+// swiftlint:disable all
 
 class GoTCombineUITests: XCTestCase {
 

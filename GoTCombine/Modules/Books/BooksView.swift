@@ -9,16 +9,13 @@ import Foundation
 import UIKit
 
 class BooksView: UIView {
-    
     init() {
         super.init(frame: .zero)
         privateInit()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     let hello: UILabel = {
         let temp: UILabel = UILabel()
         temp.text = "Hello World"
@@ -26,7 +23,6 @@ class BooksView: UIView {
         temp.font = .boldSystemFont(ofSize: 20)
         return temp
     }()
-    
     private func privateInit() {
         addSubview(hello)
         hello.centerInSuperview()
