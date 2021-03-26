@@ -11,20 +11,34 @@ import UIKit
 class BooksView: UIView {
     init() {
         super.init(frame: .zero)
+        setupTableView()
         privateInit()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    let hello: UILabel = {
-        let temp: UILabel = UILabel()
-        temp.text = "Hello World"
-        temp.textColor = .white
-        temp.font = .boldSystemFont(ofSize: 20)
+
+    let backgroundImage: UIImageView = {
+        let temp = UIImageView()
+        temp.image = UIImage(named: "imgBooks")
+        temp.contentMode = .scaleAspectFill
+        temp.clipsToBounds = true
         return temp
     }()
+    
+    let tableView: UITableView = UITableView(frame: .zero, style: .plain)
+    
+    private func setupTableView() {
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .singleLine
+        tableView.register(BooksTableViewCell.self, forCellReuseIdentifier: "BooksTableViewCell")
+    }
+    
     private func privateInit() {
-        addSubview(hello)
-        hello.centerInSuperview()
+        addSubview(backgroundImage)
+        backgroundImage.edgesToSuperview(usingSafeArea: false)
+
+        addSubview(tableView)
+        tableView.edgesToSuperview(usingSafeArea: true)
     }
 }

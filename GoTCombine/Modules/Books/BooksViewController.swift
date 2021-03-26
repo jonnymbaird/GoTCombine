@@ -25,17 +25,39 @@ class BooksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = contentView
         
         setupBindings()
         setupNavBar()
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view = contentView
+        contentView.tableView.delegate = self
+        contentView.tableView.dataSource = self
     }
     
     private func setupBindings() {
     }
     
     private func setupNavBar() {
-        //navigationController?.navigationBar.isHidden = false
-        //navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
     }
+}
+
+extension BooksViewController: UITableViewDelegate {
+    
+}
+
+extension BooksViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BooksTableViewCell", for: indexPath)
+        return cell
+    }
+    
+    
 }

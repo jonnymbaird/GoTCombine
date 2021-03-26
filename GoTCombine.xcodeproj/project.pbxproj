@@ -17,6 +17,7 @@
 		3264AE242604F3DF007A302A /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264AE212604F3DF007A302A /* BooksView.swift */; };
 		3264AE252604F3DF007A302A /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264AE222604F3DF007A302A /* BooksViewModel.swift */; };
 		3264AE482604F71D007A302A /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 3264AE472604F71D007A302A /* TinyConstraints */; };
+		32BB5F07260E07C100C6AACB /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB5F06260E07C100C6AACB /* BooksTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		3264AE202604F3DF007A302A /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		3264AE212604F3DF007A302A /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
 		3264AE222604F3DF007A302A /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
+		32BB5F06260E07C100C6AACB /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				3264AE202604F3DF007A302A /* BooksViewController.swift */,
 				3264AE212604F3DF007A302A /* BooksView.swift */,
 				3264AE222604F3DF007A302A /* BooksViewModel.swift */,
+				32BB5F06260E07C100C6AACB /* BooksTableViewCell.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32BB5F07260E07C100C6AACB /* BooksTableViewCell.swift in Sources */,
 				3264ADE02604ED74007A302A /* AppDelegate.swift in Sources */,
 				3264ADE22604ED74007A302A /* SceneDelegate.swift in Sources */,
 				3264AE232604F3DF007A302A /* BooksViewController.swift in Sources */,
