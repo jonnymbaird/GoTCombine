@@ -23,6 +23,7 @@ class BaseWebService {
                 let decoder = JSONDecoder()
                 guard let httpResponse = result.response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                     let apiError = try decoder.decode(APIError.self, from: result.data)
+                    print("Error: \(apiError.statusCode)")
                     throw apiError
                 }
                 return try decoder.decode(T.self, from: result.data)

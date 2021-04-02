@@ -9,10 +9,19 @@ import Foundation
 import UIKit
 import Combine
 
+enum Section {
+    case main
+}
+
+typealias DataSource = UITableViewDiffableDataSource<Section, Book>
+typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Book>
+
 class BooksViewController: UIViewController {
     private lazy var contentView = BooksView()
     private let viewModel: BooksViewModel
     private var subscriptions = Set<AnyCancellable>()
+    
+    private lazy var dataSource = makeDataSource()
     
     init(viewModel: BooksViewModel = BooksViewModel()) {
         self.viewModel = viewModel
@@ -28,36 +37,52 @@ class BooksViewController: UIViewController {
         
         setupBindings()
         setupNavBar()
+        applySnapshot(animatingDifferences: false)
     }
     
     override func loadView() {
         super.loadView()
         view = contentView
         contentView.tableView.delegate = self
-        contentView.tableView.dataSource = self
     }
     
     private func setupBindings() {
+        contentView.button.addTarget(self, action: #selector(reload), for: .touchUpInside)
     }
     
     private func setupNavBar() {
         navigationController?.navigationBar.isHidden = true
     }
+    
+    @objc private func reload() {
+        applySnapshot()
+    }
+    
 }
 
 extension BooksViewController: UITableViewDelegate {
-    
+
 }
 
-extension BooksViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+private extension BooksViewController {
+    func makeDataSource() -> DataSource {
+        let dataSource = DataSource(
+            tableView: contentView.tableView,
+            cellProvider: { (tableView, indexPath, book) ->
+                UITableViewCell? in
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: BooksTableViewCell.reuseIdentifier,
+                    for: indexPath) as? BooksTableViewCell
+                cell?.build(with: book.displayModel)
+                return cell
+            })
+        return dataSource
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BooksTableViewCell", for: indexPath)
-        return cell
+    func applySnapshot(animatingDifferences: Bool = true) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(viewModel.books)
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
-    
-    
 }

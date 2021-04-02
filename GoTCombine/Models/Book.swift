@@ -11,10 +11,18 @@ import Foundation
  An API of IceAndFire Book. [API Documentation](https://anapioficeandfire.com/Documentation#books)
  */
 
-struct Book: Decodable {
+struct Book: Decodable, Hashable {
     let name: String
     let numberOfPages: Int
     let released: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    
+    static func == (lhs: Book, rhs: Book) -> Bool {
+        lhs.name == rhs.name
+    }
     
 }
 
