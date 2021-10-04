@@ -5,23 +5,22 @@
 //  Created by Jonathan Baird  on 19/03/2021.
 //
 
-import Foundation
 import UIKit
 import Combine
+
+typealias DataSource = UITableViewDiffableDataSource<Section, Book>
+typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Book>
 
 enum Section {
     case main
 }
-
-typealias DataSource = UITableViewDiffableDataSource<Section, Book>
-typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Book>
 
 class BooksViewController: UIViewController {
     private lazy var contentView = BooksView()
     private let viewModel: BooksViewModel
     private var subscriptions = Set<AnyCancellable>()
     
-    private lazy var dataSource = makeDataSource()
+    private lazy var dataSource: DataSource! = nil
     
     init(viewModel: BooksViewModel = BooksViewModel()) {
         self.viewModel = viewModel
@@ -35,9 +34,11 @@ class BooksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.getBooks()
+        
+        makeDataSource()
         setupBindings()
         setupNavBar()
-        applySnapshot(animatingDifferences: false)
     }
     
     override func loadView() {
@@ -47,15 +48,14 @@ class BooksViewController: UIViewController {
     }
     
     private func setupBindings() {
-        contentView.button.addTarget(self, action: #selector(reload), for: .touchUpInside)
+        viewModel.books
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: self.applySnapshot)
+            .store(in: &subscriptions)
     }
     
     private func setupNavBar() {
         navigationController?.navigationBar.isHidden = true
-    }
-    
-    @objc private func reload() {
-        applySnapshot()
     }
     
 }
@@ -64,25 +64,27 @@ extension BooksViewController: UITableViewDelegate {
 
 }
 
-private extension BooksViewController {
-    func makeDataSource() -> DataSource {
-        let dataSource = DataSource(
-            tableView: contentView.tableView,
+extension BooksViewController {
+    func makeDataSource() {
+        let tableView = contentView.tableView
+        dataSource = DataSource(
+            tableView: tableView,
             cellProvider: { (tableView, indexPath, book) ->
                 UITableViewCell? in
-                let cell = tableView.dequeueReusableCell(
+                guard let cell = tableView.dequeueReusableCell(
                     withIdentifier: BooksTableViewCell.reuseIdentifier,
-                    for: indexPath) as? BooksTableViewCell
-                cell?.build(with: book.displayModel)
+                        for: indexPath) as? BooksTableViewCell else {
+                    fatalError("Could not create new Book cell")
+                }
+                cell.build(with: book.displayModel)
                 return cell
             })
-        return dataSource
     }
     
-    func applySnapshot(animatingDifferences: Bool = true) {
+    func applySnapshot(_ books: [Book]) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
-        snapshot.appendItems(viewModel.books)
-        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+        snapshot.appendItems(books)
+        self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 }

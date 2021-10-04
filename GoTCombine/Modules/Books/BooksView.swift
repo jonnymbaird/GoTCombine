@@ -26,21 +26,12 @@ class BooksView: UIView {
         return temp
     }()
     
-    let button: UIButton = {
-        let temp = UIButton(type: .custom)
-        temp.backgroundColor = .yellow
-        temp.setTitle("reload", for: .normal)
-        temp.setTitleColor(.black, for: .normal)
-        temp.height(30)
-        return temp
-    }()
-    
     let tableView: UITableView = UITableView(frame: .zero, style: .plain)
     
     private func setupTableView() {
         tableView.backgroundColor = .clear
-        tableView.separatorStyle = .singleLine
-        tableView.register(BooksTableViewCell.self, forCellReuseIdentifier: "BooksTableViewCell")
+        tableView.separatorStyle = .none
+        tableView.register(BooksTableViewCell.self, forCellReuseIdentifier: BooksTableViewCell.reuseIdentifier)
     }
     
     private func privateInit() {
@@ -48,9 +39,11 @@ class BooksView: UIView {
         backgroundImage.edgesToSuperview(usingSafeArea: false)
 
         addSubview(tableView)
-        tableView.edgesToSuperview(insets: UIEdgeInsets(top: UIScreen.main.bounds.height / 3, left: 0, bottom: 0, right: 0), usingSafeArea: true)
-        
-        addSubview(button)
-        button.edgesToSuperview(excluding: .top, usingSafeArea: true)
+        tableView.edgesToSuperview(insets: UIEdgeInsets(
+                                    top: UIScreen.main.bounds.height / 3,
+                                    left: 0,
+                                    bottom: 0,
+                                    right: 0),
+                                   usingSafeArea: true)
     }
 }

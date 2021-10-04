@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITableViewCell {
-    public class var reuseIdentifier: String  {
+    public class var reuseIdentifier: String {
         return NSStringFromClass(self).components(separatedBy: ".").last!
     }
 }

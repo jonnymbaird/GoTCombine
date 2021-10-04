@@ -20,10 +20,11 @@
 		326DB2A8261722CA0022720E /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326DB2A7261722CA0022720E /* UITableViewCell+reuseIdentifier.swift */; };
 		326DB2AD261723300022720E /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326DB2AC261723300022720E /* UIView+addSubviews.swift */; };
 		326DB2B2261735010022720E /* UIColor+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326DB2B1261735010022720E /* UIColor+init.swift */; };
+		326DB2C1261B18660022720E /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 326DB2C0261B18660022720E /* TimelaneCombine */; };
 		32BB5F07260E07C100C6AACB /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB5F06260E07C100C6AACB /* BooksTableViewCell.swift */; };
 		32BB5F1C260E25B200C6AACB /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB5F1B260E25B200C6AACB /* Book.swift */; };
 		32BB5F21260E308F00C6AACB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB5F20260E308F00C6AACB /* Constants.swift */; };
-		32BB5F26260E32A000C6AACB /* BooksWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB5F25260E32A000C6AACB /* BooksWebService.swift */; };
+		32BB5F26260E32A000C6AACB /* GoTWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB5F25260E32A000C6AACB /* GoTWebService.swift */; };
 		32BB5F2B260E360900C6AACB /* BaseWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB5F2A260E360900C6AACB /* BaseWebService.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +67,7 @@
 		32BB5F06260E07C100C6AACB /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
 		32BB5F1B260E25B200C6AACB /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		32BB5F20260E308F00C6AACB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		32BB5F25260E32A000C6AACB /* BooksWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksWebService.swift; sourceTree = "<group>"; };
+		32BB5F25260E32A000C6AACB /* GoTWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTWebService.swift; sourceTree = "<group>"; };
 		32BB5F2A260E360900C6AACB /* BaseWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3264AE482604F71D007A302A /* TinyConstraints in Frameworks */,
+				326DB2C1261B18660022720E /* TimelaneCombine in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +174,7 @@
 		3264AE1D2604F3AE007A302A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				32BB5F25260E32A000C6AACB /* BooksWebService.swift */,
+				32BB5F25260E32A000C6AACB /* GoTWebService.swift */,
 				32BB5F2A260E360900C6AACB /* BaseWebService.swift */,
 			);
 			path = Services;
@@ -216,6 +218,7 @@
 			name = GoTCombine;
 			packageProductDependencies = (
 				3264AE472604F71D007A302A /* TinyConstraints */,
+				326DB2C0261B18660022720E /* TimelaneCombine */,
 			);
 			productName = GoTCombine;
 			productReference = 3264ADDC2604ED74007A302A /* GoTCombine.app */;
@@ -290,6 +293,7 @@
 			mainGroup = 3264ADD32604ED74007A302A;
 			packageReferences = (
 				3264AE462604F71D007A302A /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+				326DB2BF261B18660022720E /* XCRemoteSwiftPackageReference "TimelaneCombine" */,
 			);
 			productRefGroup = 3264ADDD2604ED74007A302A /* Products */;
 			projectDirPath = "";
@@ -354,7 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				326DB2AD261723300022720E /* UIView+addSubviews.swift in Sources */,
-				32BB5F26260E32A000C6AACB /* BooksWebService.swift in Sources */,
+				32BB5F26260E32A000C6AACB /* GoTWebService.swift in Sources */,
 				32BB5F07260E07C100C6AACB /* BooksTableViewCell.swift in Sources */,
 				3264ADE02604ED74007A302A /* AppDelegate.swift in Sources */,
 				32BB5F2B260E360900C6AACB /* BaseWebService.swift in Sources */,
@@ -700,6 +704,14 @@
 				minimumVersion = 4.0.1;
 			};
 		};
+		326DB2BF261B18660022720E /* XCRemoteSwiftPackageReference "TimelaneCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/TimelaneCombine.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -707,6 +719,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3264AE462604F71D007A302A /* XCRemoteSwiftPackageReference "TinyConstraints" */;
 			productName = TinyConstraints;
+		};
+		326DB2C0261B18660022720E /* TimelaneCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 326DB2BF261B18660022720E /* XCRemoteSwiftPackageReference "TimelaneCombine" */;
+			productName = TimelaneCombine;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

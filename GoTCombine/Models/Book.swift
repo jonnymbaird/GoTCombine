@@ -22,19 +22,21 @@ struct Book: Decodable, Hashable {
     let name: String
     let numberOfPages: Int
     let released: Date
+    let isbn: String
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
+        hasher.combine(isbn)
     }
     
     static func == (lhs: Book, rhs: Book) -> Bool {
-        lhs.name == rhs.name
+        lhs.isbn == rhs.isbn
     }
     
     enum CodingKeys: String, CodingKey {
         case name
         case numberOfPages
         case released
+        case isbn
     }
     
     init(from decoder: Decoder) throws {
@@ -44,6 +46,7 @@ struct Book: Decodable, Hashable {
         let dateString = try container.decode(String.self, forKey: .released)
         Book.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         self.released = Book.dateFormatter.date(from: dateString) ?? Date()
+        self.isbn = try container.decode(String.self, forKey: .isbn)
     }
     
 }

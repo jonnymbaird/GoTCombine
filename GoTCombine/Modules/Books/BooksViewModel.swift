@@ -11,19 +11,22 @@ import Combine
 class BooksViewModel {
     private var subscriptions = Set<AnyCancellable>()
     
-    var webService: BooksWebService = BooksWebService()
-    var books: [Book] = []
+    var webService: GoTWebService = GoTWebService()
+    var books = CurrentValueSubject<[Book], Never>([])
     
     init() {
-        setup()
+        getBooks()
     }
     
-    private func setup() {
+    func getBooks() {
         webService.getBooks()
-            .sink(receiveCompletion: { completion in
-                print(completion)
-            }, receiveValue: { (books: [Book]) in
-                self.books = books
-            }).store(in: &subscriptions)
+            .catch({ error -> Just<[Book]> in
+                print("getBooks error occured: \(error)")
+                return Just([])
+            })
+            .sink(receiveValue: { (books: [Book]) in
+                self.books.value = books
+            })
+            .store(in: &subscriptions)
     }
 }
